@@ -55,3 +55,17 @@ obj = {
 }
 
 print "Or maybe it is " + obj["first_name"] + " " + obj["name"]
+
+# This starts my loop where im looping a never ending song 6 times
+song = '''
+Welcome {user} To the sentence that never ends
+It goes on and on my friend
+ok well not forever
+'''
+
+output_sting = ''
+user = last_name
+for i in range(0, 6):
+    output_sting += song
+
+print output_sting.format(**locals())
