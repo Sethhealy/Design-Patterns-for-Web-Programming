@@ -48,7 +48,8 @@ name = ["smooth", "sparkly", "Funky fresh"]
 
 print "Your hipster name is " + name[int(number)] + ' ' + first_name
 # I made a dictionary and named it obj where i am pulling my variable first_name and my variable name with another
-# variable for number pulling it into a string naming your hipster name
+# variable for number pulling it into a string naming your hipster name so you can know how cool you are.
+
 obj = {
     "first_name": first_name,
     "name": name[int(number)]
@@ -56,7 +57,7 @@ obj = {
 
 print "Or maybe it is " + obj["first_name"] + " " + obj["name"]
 
-# This starts my loop where im looping a never ending song 6 times and outputting it 
+# This starts my loop where im looping a never ending song 6 times and outputting it.
 song = '''
 Welcome {user} To the sentence that never ends
 It goes on and on my friend
