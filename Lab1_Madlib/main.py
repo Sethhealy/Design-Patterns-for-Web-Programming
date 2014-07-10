@@ -43,7 +43,7 @@ else:
 # Here im having the user pick a number for there hipster name
 number = raw_input("Pick a number between 0-2 for your hipster name: ")
 
-# Here im outputting the hipster name from the number the user chose
+# Here im outputting the hipster name from the number the user chose.
 name = ["smooth", "sparkly", "Funky fresh"]
 
 print "Your hipster name is " + name[int(number)] + ' ' + first_name
