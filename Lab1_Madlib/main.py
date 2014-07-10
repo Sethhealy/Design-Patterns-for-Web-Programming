@@ -56,7 +56,7 @@ obj = {
 
 print "Or maybe it is " + obj["first_name"] + " " + obj["name"]
 
-# This starts my loop where im looping a never ending song 6 times
+# This starts my loop where im looping a never ending song 6 times and outputting it 
 song = '''
 Welcome {user} To the sentence that never ends
 It goes on and on my friend
