@@ -34,7 +34,7 @@ children = raw_input("How many children do you have? ")
 print "Your name is " + first_name + " " + last_name + " and you are " + str(age) + " " + \
       "years old" + " and you have" + " " + children + " children"
 # Here I have an if statement where if your said you have 0 children a message appears and if you said you
-# did have children another message appeared
+# did have children another message appeared. I added if statements for a fun message.
 if int(children) == 0:
     print "Lucky you!!"
 else:
