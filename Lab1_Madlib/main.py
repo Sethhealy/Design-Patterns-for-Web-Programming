@@ -23,10 +23,10 @@ def age_calc(y, b):
     a = b - y
     return a
 
-#here im calculating the information
+#here im calculating the information for your age.
 age = age_calc(int(year), 2014)
 
-# here im asking for the number for children you have
+# here im asking for the number for children you have.
 
 children = raw_input("How many children do you have? ")
 
