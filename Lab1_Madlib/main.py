@@ -40,7 +40,7 @@ if int(children) == 0:
 else:
     print "Lucky you"
 
-# Here im having the user pick a number for there hipster name
+# Here im having the user pick a number for there hipster name between 0-2 because 0 is the first location.
 number = raw_input("Pick a number between 0-2 for your hipster name: ")
 
 # Here im outputting the hipster name from the number the user chose.
