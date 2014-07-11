@@ -1,13 +1,10 @@
-application: simple-form
+application: classes-demo
 version: 1
 runtime: python27
 api_version: 1
 threadsafe: yes
 
 handlers:
-- url: /styles/
-  static_dir: styles
-
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
