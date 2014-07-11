@@ -4,31 +4,32 @@ Seth Healy
 Python Quiz
 """
 
-# width = raw_input("What is the Width of the equation? ")
-#
-# height = raw_input("What is the Height of the equation? ")
-#
-# def calc_area(h, w):
-#     square =  w * w
-#     return square
-# square = calc_area(width, height)
-# def calc_area1(h, w):
-#     rectangle = h * w
-#     return rectangle
-#
-# if width == height:
-#     print "You must be a square" + " Your answer is" + int(calc_area)
-#
-# else:
-#     print "You must be a rectangle" + " Your answer is" + int(calc_area1)
+width = raw_input("What is the Width of the equation? ")
+
+height = raw_input("What is the Height of the equation? ")
 
 
-mysong = '''
-Bottles of Beer on the Wall,  Bottles of Beer.. take one down and pass it around. Now you have
-bottles of beer on the wall!
-'''
-output_string= ''
-for i in range(1,99):
-    output_string += mysong
+def calc_area(h, w):
+    if w == h:
+        print "the Width and Height are the same making it a square " + str(w * h)
+    else:
+        print "this is a rectangle with " + str(w * h)
 
-print output_string.format(**locals())
+
+# mysong = '''
+# {beer} Bottles of Beer on the Wall,  {beer} Bottles of Beer.. take one down and pass it around. Now you have
+# {minus} bottles of beer on the wall!
+# '''
+#
+# beer = 99
+# minus = beer - 1
+#
+# for i in range(1, 99, -1):
+#     minus -= beer
+#
+#     beer = minus
+# output_string = ''
+# for i in range(1, 99):
+#     output_string += mysong
+#
+# print output_string.format(**locals())
