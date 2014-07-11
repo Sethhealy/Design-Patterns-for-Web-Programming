@@ -18,7 +18,7 @@ def calc_area(h, w):
 calc_area(14.1421, 14.1421)
 calc_area(14.1421, 1.4142)
 
-
+# i defined beer and a count so that i could use them to count down my beer song
 def beer(count):
     for i in range(count):
         print str(count) + " Bottles of Beer on the Wall, " + str(count) + ' ' + "Bottles of Beer.. " \
@@ -26,4 +26,4 @@ def beer(count):
                            "bottles of beer on the wall!"
         count -= 1
 
-beer(10)
+beer(99)
