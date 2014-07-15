@@ -8,7 +8,7 @@ class MainHandler(webapp2.RequestHandler):
 
         if self.request.GET:
 
-            p.content = ''
+            p.content = 'Confirm this information to be true and if so keep as a record <br/>'
 
             p.content += "First name: " + self.request.GET['fname']
             p.content += "<br />Last name: " + self.request.GET['lname']
@@ -56,17 +56,12 @@ class Page(object):
         <form method="GET">
         <h1> Destiny Beta </h1>
         <div class="wrapper">
-        <div class="space"></div>
-        <div class="space"></div>
         <h2> Pre-order Today</h2>
             <input type="text" placeholder ="First Name" name= "fname" />
             <input type="text" placeholder ="Last Name"  name= "lname"/><br/>
-            <div class="space"></div>
             <input type="text" placeholder ="Email"  name= "ename"/><br/>
-            <div class="space"></div>
             <input type="text" placeholder ="City"  name= "city"/>
             <input type="text" placeholder ="State"  name= "state"/><br/>
-            <div class="space"></div>
             <input type="text" placeholder ="Country"  name= "country"/>
             <h5 class="systems">Systems</h5>
             <input type="checkbox" name="ps4" value="ps4">PS4
