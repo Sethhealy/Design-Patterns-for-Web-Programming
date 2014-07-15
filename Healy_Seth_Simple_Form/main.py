@@ -11,8 +11,10 @@ class MainHandler(webapp2.RequestHandler):
             p.content += "<br />Last name: " + self.request.GET['lname']
             p.content += "<br />Email: " + self.request.GET['ename']
             p.content += "<br />City: " + self.request.GET['city']
-            p.content += "<br />Last name: " + self.request.GET['state']
-            p.content += "<br />Last name: " + self.request.GET['country']
+            p.content += "<br />State: " + self.request.GET['state']
+            p.content += "<br />Country: " + self.request.GET['country']
+
+
             self.response.write(p.print_out_page())
 
         else:
@@ -39,10 +41,10 @@ class Page(object):
             <input type="text" placeholder ="City"  name= "city"/>
             <input type="text" placeholder ="State"  name= "state"/>
             <input type="text" placeholder ="Country"  name= "country"/>
-            <input type="checkbox" name="system" value="ps4">PS4<br>
-            <input type="checkbox" name="vehicle" value="xbox">Xbox1<br>
-            <input type="checkbox" name="vehicle" value="wiiu">Wii U<br>
-            <input type="checkbox" name="vehicle" value="pc">PC<br>
+            <input type="checkbox" name="ps4" value="ps4">PS4<br>
+            <input type="checkbox" name="xbox" value="xbox">Xbox1<br>
+            <input type="checkbox" name="wiiu" value="wiiu">Wii U<br>
+            <input type="checkbox" name="pc" value="pc">PC<br>
 
             <input type="submit" value ="submit info" />
         </form>
