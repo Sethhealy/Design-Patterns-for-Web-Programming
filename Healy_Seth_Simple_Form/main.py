@@ -54,31 +54,43 @@ class Page(object):
     content = '''Please Work'''
     form_content = '''
         <form method="GET">
+        <h1> Destiny Beta </h1>
+        <div class="wrapper">
+        <div class="space"></div>
+        <div class="space"></div>
+        <h2> Pre-order Today</h2>
             <input type="text" placeholder ="First Name" name= "fname" />
             <input type="text" placeholder ="Last Name"  name= "lname"/><br/>
+            <div class="space"></div>
             <input type="text" placeholder ="Email"  name= "ename"/><br/>
+            <div class="space"></div>
             <input type="text" placeholder ="City"  name= "city"/>
             <input type="text" placeholder ="State"  name= "state"/><br/>
+            <div class="space"></div>
             <input type="text" placeholder ="Country"  name= "country"/>
             <h5 class="systems">Systems</h5>
             <input type="checkbox" name="ps4" value="ps4">PS4
             <input type="checkbox" name="xbox" value="xbox">Xbox1<br/>
             <input type="checkbox" name="wiiu" value="wii u">Wii U
-            <input type="checkbox" name="pc" value="pc">PC<br/>
+            <input type="checkbox" name="pc" value="pc">PC
             <h5 class="retailer">Retailers</h5>
+            <div class="space"></div>
             <select name="retail">
                 <option value="bestbuy">Best buy</option>
                 <option value="gamestop">GameStop</option>
                 <option value="psn">PlayStation store</option>
                 <option value="target">Target</option>
-            </select><br />
+            </select>
+            <div class="space"></div>
             <select name="edition">
                 <option value="Standard">Standard</option>
                 <option value="Collectors Edition">Collectors edition</option>
                 <option value="Limited Edition">Limited Edition</option>
-            </select><br />
+            </select>
+            <div class="space"></div>
             <input type="submit" value ="Order" />
         </form>
+        </div>
     '''
     closer = '''
      </body>

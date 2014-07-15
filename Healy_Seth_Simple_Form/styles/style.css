@@ -1,0 +1,13 @@
+body{
+    background-color:#25b725;
+    color:white;
+}
+
+.space{
+    margin-top:10px;
+}
+
+.wrapper{
+    width:40%;
+    margin:0 auto;
+}
