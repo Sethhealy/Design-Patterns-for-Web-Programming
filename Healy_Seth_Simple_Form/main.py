@@ -8,25 +8,29 @@ class MainHandler(webapp2.RequestHandler):
 
         if self.request.GET:
 
-            if self.request.GET.has_key('ps4'):
-                p.content = "System: " + self.request.GET['ps4']
-                p.content = "System: " + self.request.GET['xbox']
-                p.content = "System: " + self.request.GET['wiiu']
-                p.content = "System: " + self.request.GET['pc']
+            p.content = ''
 
-
-            p.content = "First name: " + self.request.GET['fname']
+            p.content += "First name: " + self.request.GET['fname']
             p.content += "<br />Last name: " + self.request.GET['lname']
             p.content += "<br />Email: " + self.request.GET['ename']
             p.content += "<br />City: " + self.request.GET['city']
             p.content += "<br />State: " + self.request.GET['state']
             p.content += "<br />Country: " + self.request.GET['country']
-            p.content += "<br /> System: " + self.request.GET['ps4']
-            p.content += "<br /> System: " + self.request.GET['xbox']
-            p.content += "<br /> System: " + self.request.GET['wiiu']
-            p.content += "<br /> System: " + self.request.GET['pc']
+
+            if self.request.GET.has_key('ps4'):
+                p.content += "<br />System: " + self.request.GET['ps4']
+
+            if self.request.GET.has_key('xbox'):
+                p.content += "<br />System: " + self.request.GET['xbox']
+
+            if self.request.GET.has_key('wiiu'):
+                p.content += "<br />System: " + self.request.GET['wiiu']
+
+            if self.request.GET.has_key('pc'):
+                p.content += "<br />System: " + self.request.GET['pc']
+
             p.content += "<br /> Retailer: " + self.request.GET['retail']
-            p.content += "<br /> edition: " + self.request.GET['edition']
+            p.content += "<br /> Edition: " + self.request.GET['edition']
 
 
 
@@ -59,7 +63,7 @@ class Page(object):
             <h5 class="systems">Systems</h5>
             <input type="checkbox" name="ps4" value="ps4">PS4
             <input type="checkbox" name="xbox" value="xbox">Xbox1<br/>
-            <input type="checkbox" name="wiiu" value="wiiu">Wii U
+            <input type="checkbox" name="wiiu" value="wii u">Wii U
             <input type="checkbox" name="pc" value="pc">PC<br/>
             <h5 class="retailer">Retailers</h5>
             <select name="retail">
@@ -67,13 +71,13 @@ class Page(object):
                 <option value="gamestop">GameStop</option>
                 <option value="psn">PlayStation store</option>
                 <option value="target">Target</option>
-            </select>
+            </select><br />
             <select name="edition">
-                <option value="standard">Standard</option>
-                <option value="ce">Collectors edition</option>
-                <option value="le">Limited Edition</option>
-            </select>
-            <input type="submit" value ="submit info" />
+                <option value="Standard">Standard</option>
+                <option value="Collectors Edition">Collectors edition</option>
+                <option value="Limited Edition">Limited Edition</option>
+            </select><br />
+            <input type="submit" value ="Order" />
         </form>
     '''
     closer = '''
