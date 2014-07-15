@@ -1,11 +1,12 @@
 import webapp2
 
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
 
+    p = Page()
 
-
-
+    
 
 
 class Page(object):
@@ -44,6 +45,7 @@ class Page(object):
     def print_out_form(self):
         return self.header + self.form_content + self.closer
 
+
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
-], debug=True)
+                                  ('/', MainHandler)
+                              ], debug=True)
