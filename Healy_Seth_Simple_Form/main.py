@@ -8,8 +8,8 @@ class MainHandler(webapp2.RequestHandler):
 
         if self.request.GET:
 
-            p.content = 'Confirm this information to be true and if so keep as a record <br/>'
-
+            p.content = 'Confirm this information to be true and if so keep as a record <br/>' \
+                        '<br/>'
             p.content += "First name: " + self.request.GET['fname']
             p.content += "<br />Last name: " + self.request.GET['lname']
             p.content += "<br />Email: " + self.request.GET['ename']
@@ -45,7 +45,7 @@ class Page(object):
     <html>
         <head>
             <link rel="stylesheet" href="styles/style.css" type="text/css"/>
-            <title>Welcome to my page </title>
+            <title>Pre-order today!!! </title>
         </head>
         <body>
 
