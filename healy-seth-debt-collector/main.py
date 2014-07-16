@@ -11,7 +11,7 @@ class MainHandler(webapp2.RequestHandler):
 
 class Character(object):
 
-   
+
 
 
 
