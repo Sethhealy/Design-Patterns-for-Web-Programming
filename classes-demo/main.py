@@ -8,7 +8,7 @@ class MainHandler(webapp2.RequestHandler):
         yoda.name = "Jedi Master Yoda"
         yoda.occupation = "Jedi Knight"
         yoda.hometown = "Dagoba"
-        yoda.quote = "Anger leads to hate"
+        yoda.quote = "Anger leads to hate <br />"
 
         self.response.write(yoda.say())
 

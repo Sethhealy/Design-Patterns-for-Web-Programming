@@ -7,8 +7,8 @@ class MainHandler(webapp2.RequestHandler):
         p = Page()
 
         if self.request.GET:
-
-            p.content = 'Confirm this information to be true and if so keep as a record <br/>' \
+            p.content ="<div class=\"wrapper\">"
+            p.content += 'Confirm this information to be true and if so keep as a record <br/>' \
                         '<br/>'
             p.content += "First name: " + self.request.GET['fname']
             p.content += "<br />Last name: " + self.request.GET['lname']
@@ -31,7 +31,7 @@ class MainHandler(webapp2.RequestHandler):
 
             p.content += "<br /> Retailer: " + self.request.GET['retail']
             p.content += "<br /> Edition: " + self.request.GET['edition']
-
+            p.content +="</div>"
 
 
             self.response.write(p.print_out_page())

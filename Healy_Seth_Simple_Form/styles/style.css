@@ -1,6 +1,6 @@
 body{
-    background-color:#2d932d;
-    background-image: url("../images/background.jpg") no-repeat;
+
+    background: #2d932d url("../images/background.jpg") no-repeat;
 }
 
 h1{
@@ -22,5 +22,10 @@ input{
 
 content{
     width:100%;
+    margin:0 auto;
+}
+
+.wrapper{
+    width:200px;
     margin:0 auto;
 }
