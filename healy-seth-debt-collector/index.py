@@ -26,3 +26,5 @@ class Page(object):
 
      </body>
      </html>'''
+
+    def render(self):

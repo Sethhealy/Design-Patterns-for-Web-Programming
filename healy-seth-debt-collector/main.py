@@ -59,6 +59,11 @@ class MainHandler(webapp2.RequestHandler):
 
                 self.response.write(p.content)
 
+        else:
+            page = Page()
+            page.people = [person1, person2]
+            self.response.write(page.content)
+
 class PersonPage(object):
 
     person = None;
