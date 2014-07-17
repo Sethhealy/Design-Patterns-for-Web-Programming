@@ -11,7 +11,7 @@ class MainHandler(webapp2.RequestHandler):
         person1.name = "Alan"
         person1.degree = "web Design"
         person1.grad = 2015
-        person1.year = 1988
+        person1.year = 1985
 
         person2 = Person()
         person2.cost = 90000
@@ -25,36 +25,36 @@ class MainHandler(webapp2.RequestHandler):
         person3.name = "Carmine"
         person3.degree = "web Design"
         person3.grad = 2015
-        person3.year = 1988
+        person3.year = 1987
 
         person4 = Person()
-        person4.cost = 80000
+        person4.cost = 100000
         person4.name = "Emmanuel"
-        person4.degree = "web Design"
+        person4.degree = "web thinker"
         person4.grad = 2015
-        person4.year = 1988
+        person4.year = 1990
 
         person5 = Person()
-        person5.cost = 80000
+        person5.cost = 120000
         person5.name = "Julio"
-        person5.degree = "web Design"
+        person5.degree = "unemployed"
         person5.grad = 2015
-        person5.year = 1988
+        person5.year = 1986
 
         people = {
-            "person1":person1,
-            "person2":person2,
-            "person3":person3,
-            "person4":person4,
-            "person5":person5
+            "person1": person1,
+            "person2": person2,
+            "person3": person3,
+            "person4": person4,
+            "person5": person5
         }
 
         if self.request.GET:
             if self.request.GET.has_key("person"):
 
-                getPerson = self.request.GET["person"]
+                getperson = self.request.GET["person"]
 
-                p.person = people[getPerson]
+                p.person = people[getperson]
                 p.render()
 
                 self.response.write(p.content)
@@ -64,9 +64,9 @@ class MainHandler(webapp2.RequestHandler):
             page.people = [person1, person2]
             self.response.write(page.content)
 
-class PersonPage(object):
 
-    person = None;
+class PersonPage(object):
+    person = None
 
     title = ""
 
@@ -88,14 +88,14 @@ class PersonPage(object):
     def render(self):
         # generate content
         self.__content += self.header.format(**locals())
-        self.__content += "<p>"+self.person.name+"</p>"
-        self.__content += "<p>"+str(self.person.year)+"</p>"
-        self.__content += "<p>"+self.person.degree+"</p>"
-        self.__content += "<p>"+str(self.person.grad)+"</p>"
-        self.__content += "<p>"+str(self.person.cost)+"</p>"
-        self.__content += "<p>"+str(self.person.interest_five)+"</p>"
-        self.__content += "<p>"+str(self.person.interest_ten)+"</p>"
-        self.__content += "<p>"+str(self.person.interest_fifteen)+"</p>"
+        self.__content += "<p>" + self.person.name + "</p>"
+        self.__content += "<p>" + str(self.person.year) + "</p>"
+        self.__content += "<p>" + self.person.degree + "</p>"
+        self.__content += "<p>" + str(self.person.grad) + "</p>"
+        self.__content += "<p>" + str(self.person.cost) + "</p>"
+        self.__content += "<p>" + str(self.person.interest_five) + "</p>"
+        self.__content += "<p>" + str(self.person.interest_ten) + "</p>"
+        self.__content += "<p>" + str(self.person.interest_fifteen) + "</p>"
         self.__content += self.footer
 
     @property
@@ -105,7 +105,6 @@ class PersonPage(object):
     @property
     def css(self):
         return self.__css
-
 
 
 class Person(object):
