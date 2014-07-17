@@ -10,35 +10,35 @@ class MainHandler(webapp2.RequestHandler):
         person1.cost = 80000
         person1.name = "Alan"
         person1.degree = "web Design"
-        person1.grad = 2015
+        person1.grad = 2014
         person1.year = 1985
 
         person2 = Person()
         person2.cost = 90000
         person2.name = "Seth"
         person2.degree = "web Design"
-        person2.grad = 2015
+        person2.grad = 2014
         person2.year = 1988
 
         person3 = Person()
         person3.cost = 80000
         person3.name = "Carmine"
         person3.degree = "web Design"
-        person3.grad = 2015
+        person3.grad = 2014
         person3.year = 1987
 
         person4 = Person()
         person4.cost = 100000
         person4.name = "Emmanuel"
         person4.degree = "web thinker"
-        person4.grad = 2015
+        person4.grad = 2014
         person4.year = 1990
 
         person5 = Person()
         person5.cost = 200000
         person5.name = "Julio"
         person5.degree = "unemployed"
-        person5.grad = 2015
+        person5.grad = 2014
         person5.year = 1986
 
         people = {
@@ -61,8 +61,8 @@ class MainHandler(webapp2.RequestHandler):
 
         else:
             page = Page()
-            page.people = [person1, person2]
-            self.response.write(page.content)
+            page.people = [person1, person2, person3, person4, person5]
+            self.response.write(page.people)
 
 
 class PersonPage(object):
@@ -70,12 +70,12 @@ class PersonPage(object):
 
     title = ""
 
-    __css = "css/styles.css"
+    __css = "styles/styles.css"
 
     header = """ <!DOCTYPE HTML>
 <head>
 <title>{self.title}</title>
-<link rel="stylesheet" type="text/css" href="{self.css}" />
+<link rel="stylesheet" href="styles/style.css" type="text/css"" />
 </head>
 <body>
 """
