@@ -35,7 +35,7 @@ class MainHandler(webapp2.RequestHandler):
         person4.year = 1990
 
         person5 = Person()
-        person5.cost = 120000
+        person5.cost = 200000
         person5.name = "Julio"
         person5.degree = "unemployed"
         person5.grad = 2015
