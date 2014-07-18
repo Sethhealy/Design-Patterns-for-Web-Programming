@@ -105,8 +105,8 @@ class PersonPage(object):
         self.__content += self.header.format(**locals())
 
         for person in self.__people:
-            self.__content +=  '<div class="names"><a href="/?person=' + person + '"> <div class="space"> </div>' + self.__people[person].name + \
-                               ' </a></div>'
+            self.__content += '<a href="/?person=' + person + '"> <div class="space"> </div>' + self.__people[person].name + \
+                              '</a>'
 
         if bool(self.person):
             self.__content += "<p>" + "Student name: " + self.person.name + "</p>"
@@ -116,7 +116,7 @@ class PersonPage(object):
             self.__content += "<p>" + "How much school cost: " + str(self.person.cost) + "</p>"
             self.__content += "<p>" + "Interest added in the past 5 years: " + str(self.person.interest_five) + "</p>"
             self.__content += "<p>" + "Interest added in the past 10 years: " + str(self.person.interest_ten) + "</p>"
-            self.__content += "<p>" + "Interest added in the past 15 years: " + str(self.person.interest_fifteen) + "</p>"
+            self.__content += "<p>" + "Interest added in the past 15 years: " + str(self.person.interest_fifteen)+"</p>"
 
         self.__content += self.footer
 

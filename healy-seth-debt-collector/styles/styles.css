@@ -1,5 +1,6 @@
 body{
     background-color:lightblue;
+    font-family:franklin gothic;
 }
 
 h1{
@@ -13,7 +14,8 @@ h1{
 .names{
     width:100px;
     margin-left:30px;
-    float:right;
+    float:left;
+
 }
 
 .wrapper{
