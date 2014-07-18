@@ -5,3 +5,18 @@ body{
 h1{
     text-align:center;
 }
+
+.space{
+    margin-top:10px;
+}
+
+.names{
+    width:100px;
+    margin-left:30px;
+    float:right;
+}
+
+.wrapper{
+    width:96%;
+    margin:0 auto;
+}

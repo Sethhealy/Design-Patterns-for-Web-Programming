@@ -10,35 +10,35 @@ class MainHandler(webapp2.RequestHandler):
         person1 = Person()
         person1.cost = 80000
         person1.name = "Alan"
-        person1.degree = "web Design"
+        person1.degree = "Web Design"
         person1.grad = 2014
         person1.year = 1985
 
         person2 = Person()
         person2.cost = 90000
         person2.name = "Seth"
-        person2.degree = "web Design"
+        person2.degree = "Web Design"
         person2.grad = 2014
         person2.year = 1988
 
         person3 = Person()
         person3.cost = 80000
         person3.name = "Carmine"
-        person3.degree = "web Design"
+        person3.degree = "Web Design"
         person3.grad = 2014
         person3.year = 1987
 
         person4 = Person()
         person4.cost = 100000
         person4.name = "Emmanuel"
-        person4.degree = "web thinker"
+        person4.degree = "Web Thinker"
         person4.grad = 2014
         person4.year = 1990
 
         person5 = Person()
         person5.cost = 200000
         person5.name = "Julio"
-        person5.degree = "unemployed"
+        person5.degree = "Unemployed"
         person5.grad = 2014
         person5.year = 1986
 
@@ -76,13 +76,13 @@ class PersonPage(object):
 
     header = """ <!DOCTYPE HTML>
 <head>
-    <title>{self.title}</title>
+    <title>Debt.org</title>
     <link rel="stylesheet" href="styles/styles.css" type="text/css"" />
 </head>
-<body>
+<body><div class="wrapper">
 """
 
-    footer = """</body>
+    footer = """</div></body>
 </html>"""
 
     __content = """
@@ -94,7 +94,6 @@ class PersonPage(object):
 
         <h3> (ex)-Students </h3>
 
-        <a href="/"> None </a>
 
     """
 
@@ -106,17 +105,18 @@ class PersonPage(object):
         self.__content += self.header.format(**locals())
 
         for person in self.__people:
-            self.__content +=  '<a href="/?person=' + person + '"> <div class="names"><br/></div>' + self.__people[person].name + ' </a>'
+            self.__content +=  '<div class="names"><a href="/?person=' + person + '"> <div class="space"> </div>' + self.__people[person].name + \
+                               ' </a></div>'
 
         if bool(self.person):
-            self.__content += "<p>" + self.person.name + "</p>"
-            self.__content += "<p>" + str(self.person.year) + "</p>"
-            self.__content += "<p>" + self.person.degree + "</p>"
-            self.__content += "<p>" + str(self.person.age) + "</p>"
-            self.__content += "<p>" + str(self.person.cost) + "</p>"
-            self.__content += "<p>" + str(self.person.interest_five) + "</p>"
-            self.__content += "<p>" + str(self.person.interest_ten) + "</p>"
-            self.__content += "<p>" + str(self.person.interest_fifteen) + "</p>"
+            self.__content += "<p>" + "Student name: " + self.person.name + "</p>"
+            self.__content += "<p>" + "Year of birth: " + str(self.person.year) + "</p>"
+            self.__content += "<p>" + "What degree: " + self.person.degree + "</p>"
+            self.__content += "<p>" + "Age: " + str(self.person.age) + "</p>"
+            self.__content += "<p>" + "How much school cost: " + str(self.person.cost) + "</p>"
+            self.__content += "<p>" + "Interest added in the past 5 years: " + str(self.person.interest_five) + "</p>"
+            self.__content += "<p>" + "Interest added in the past 10 years: " + str(self.person.interest_ten) + "</p>"
+            self.__content += "<p>" + "Interest added in the past 15 years: " + str(self.person.interest_fifteen) + "</p>"
 
         self.__content += self.footer
 
