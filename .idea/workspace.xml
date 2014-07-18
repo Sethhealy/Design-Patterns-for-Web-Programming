@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9b3a6a8b-08b0-441c-98f2-2afbe133e0e0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/healy-seth-quizclasses/main.py" afterPath="$PROJECT_DIR$/healy-seth-quizclasses/main.py" />
-    </list>
+    <list default="true" id="9b3a6a8b-08b0-441c-98f2-2afbe133e0e0" name="Default" comment="" />
     <ignored path="SethHealyDPW.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
