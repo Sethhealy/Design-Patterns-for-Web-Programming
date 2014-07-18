@@ -6,33 +6,40 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write('Hello world!')
 
 
-class Students(object):
+class Page(object):
     _head = """<!DOCTYPE HTML>
 <head>
     <title>Inheritance</title>
 </head>
 <body>"""
-    _content = ''
+    __content = ''
 
-    _close = """
+    close = """
 </body>
 </html>"""
+
+
+class Custodian(Page):
+    def odds(self):
+        return 4 + 0
+
 
     def __init__(self):
         pass
 
     def print_out(self):
-        return self._head + self._content + self._close
+        return self._head + self.__content + self.close
+
+    @content.setter
+    def content(self, c):
+        self.__content = c
 
 
-class Solider(Students):
-
+class Solider(Page):
     def chances(self):
         return 4 + 4
 
-    
-
 
 app = webapp2.WSGIApplication([
-                       ('/', MainHandler)
-                  ], debug=True)
+                                  ('/', MainHandler)
+                              ], debug=True)
