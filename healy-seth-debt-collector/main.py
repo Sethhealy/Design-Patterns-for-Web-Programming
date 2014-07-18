@@ -1,5 +1,4 @@
 import webapp2
-from index import Page
 
 
 class MainHandler(webapp2.RequestHandler):
@@ -104,11 +103,14 @@ class PersonPage(object):
         # generate content
         self.__content += self.header.format(**locals())
 
+        self.__content += "<div class='students'>"
         for person in self.__people:
+
             self.__content += '<a href="/?person=' + person + '"> <div class="space"> </div>' + self.__people[person].name + \
                               '</a>'
-
+        self.__content += "</div>"
         if bool(self.person):
+            self.__content += "<div class='names'>"
             self.__content += "<p>" + "Student name: " + self.person.name + "</p>"
             self.__content += "<p>" + "Year of birth: " + str(self.person.year) + "</p>"
             self.__content += "<p>" + "What degree: " + self.person.degree + "</p>"
@@ -117,7 +119,7 @@ class PersonPage(object):
             self.__content += "<p>" + "Interest added in the past 5 years: " + str(self.person.interest_five) + "</p>"
             self.__content += "<p>" + "Interest added in the past 10 years: " + str(self.person.interest_ten) + "</p>"
             self.__content += "<p>" + "Interest added in the past 15 years: " + str(self.person.interest_fifteen)+"</p>"
-
+            self.__content += "</div>"
         self.__content += self.footer
 
     @property
