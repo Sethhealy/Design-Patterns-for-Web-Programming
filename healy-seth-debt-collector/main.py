@@ -4,6 +4,7 @@ from index import Page
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
+
         p = PersonPage()
 
         person1 = Person()
@@ -49,6 +50,8 @@ class MainHandler(webapp2.RequestHandler):
             "person5": person5
         }
 
+        p.people(people)
+
         if self.request.GET:
             if self.request.GET.has_key("person"):
 
@@ -60,22 +63,21 @@ class MainHandler(webapp2.RequestHandler):
                 self.response.write(p.content)
 
         else:
-            page = Page()
-            page.people = [person1, person2, person3, person4, person5]
-            self.response.write(page.people)
+            p.render()
+            self.response.write(p.content)
 
 
 class PersonPage(object):
+
+    __people = {}
     person = None
 
     title = ""
 
-    __css = "styles/styles.css"
-
     header = """ <!DOCTYPE HTML>
 <head>
-<title>{self.title}</title>
-<link rel="stylesheet" href="styles/style.css" type="text/css"" />
+    <title>{self.title}</title>
+    <link rel="stylesheet" href="styles/styles.css" type="text/css"" />
 </head>
 <body>
 """
@@ -83,19 +85,39 @@ class PersonPage(object):
     footer = """</body>
 </html>"""
 
-    __content = ""
+    __content = """
+
+        <h1> Debt calculator </h1>
+        <p> Everyone goes to school for a better life but we all know when you go as a full time student to where\
+        you cannot work you will acquire a lot of debt here I will show you how much debt a few students are and \
+        what degrees they were in when they graduated </p>
+
+        <h3> (ex)-Students </h3>
+
+        <a href="/"> None </a>
+
+    """
+
+    def people(self, people):
+        self.__people = people
 
     def render(self):
         # generate content
         self.__content += self.header.format(**locals())
-        self.__content += "<p>" + self.person.name + "</p>"
-        self.__content += "<p>" + str(self.person.year) + "</p>"
-        self.__content += "<p>" + self.person.degree + "</p>"
-        self.__content += "<p>" + str(self.person.grad) + "</p>"
-        self.__content += "<p>" + str(self.person.cost) + "</p>"
-        self.__content += "<p>" + str(self.person.interest_five) + "</p>"
-        self.__content += "<p>" + str(self.person.interest_ten) + "</p>"
-        self.__content += "<p>" + str(self.person.interest_fifteen) + "</p>"
+
+        for person in self.__people:
+            self.__content +=  '<a href="/?person=' + person + '"> ' + self.__people[person].name + ' </a>'
+
+        if bool(self.person):
+            self.__content += "<p>" + self.person.name + "</p>"
+            self.__content += "<p>" + str(self.person.year) + "</p>"
+            self.__content += "<p>" + self.person.degree + "</p>"
+            self.__content += "<p>" + str(self.person.grad) + "</p>"
+            self.__content += "<p>" + str(self.person.cost) + "</p>"
+            self.__content += "<p>" + str(self.person.interest_five) + "</p>"
+            self.__content += "<p>" + str(self.person.interest_ten) + "</p>"
+            self.__content += "<p>" + str(self.person.interest_fifteen) + "</p>"
+
         self.__content += self.footer
 
     @property
@@ -104,7 +126,7 @@ class PersonPage(object):
 
     @property
     def css(self):
-        return self.__css
+        return self.css
 
 
 class Person(object):
