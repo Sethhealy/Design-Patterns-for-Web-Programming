@@ -26,10 +26,11 @@ class Students(object):
 
 
 class Solider(Students):
+
     def chances(self):
-        if 
+        return 4 + 4
 
-
+    
 
 
 app = webapp2.WSGIApplication([
