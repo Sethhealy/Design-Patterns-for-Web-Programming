@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b3a6a8b-08b0-441c-98f2-2afbe133e0e0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/healy-seth-debt-collector/main.py" afterPath="$PROJECT_DIR$/healy-seth-debt-collector/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/healy-seth-quizclasses/main.py" afterPath="$PROJECT_DIR$/healy-seth-quizclasses/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/healy-seth-debt-collector/styles/styles.css" afterPath="$PROJECT_DIR$/healy-seth-debt-collector/styles/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SethHealyDPW.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,8 +72,8 @@
       <file leaf-file-name="main.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/healy-seth-quizclasses/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24017467" vertical-offset="0" max-vertical-offset="687">
-              <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.6331878" vertical-offset="0" max-vertical-offset="687">
+              <caret line="29" column="11" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -86,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/inheritence/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1320">
-              <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -668,15 +665,15 @@
     <entry file="file://$PROJECT_DIR$/inheritence/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1320">
-          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/healy-seth-quizclasses/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24017467" vertical-offset="0" max-vertical-offset="687">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.6331878" vertical-offset="0" max-vertical-offset="687">
+          <caret line="29" column="11" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
           <folding />
         </state>
       </provider>
