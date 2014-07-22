@@ -15,9 +15,31 @@ class MainHandler(webapp2.RequestHandler):
         animal1.geo = ""
 
 
+        animal2 = Animal()
+        animal2.name = "Fox"
+        animal2.phylum = " "
+        animal2.classification = " "
+        animal2.family = ""
+        animal2.genus = ""
+        animal2.average = 0
+        animal2.habitat = ""
+        animal2.geo = ""
 
 
-class Page(object):
+
+        animal3 = Animal()
+        animal3.name = "Fox"
+        animal3.phylum = " "
+        animal3.classification = " "
+        animal3.family = ""
+        animal3.genus = ""
+        animal3.average = 0
+        animal3.habitat = ""
+        animal3.geo = ""
+
+
+
+class AnimalPage(object):
     _head = """<!DOCTYPE HTML>
 <head>
     <title>Inheritance</title>
