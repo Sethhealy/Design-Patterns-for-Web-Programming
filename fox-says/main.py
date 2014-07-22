@@ -4,7 +4,8 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         A = AnimalPage()
 
-
+        horse=Horse()
+        cow=Cow()
         fox = Fox()
         self.response.write(fox.roar())
 
@@ -13,7 +14,7 @@ class MainHandler(webapp2.RequestHandler):
 class AnimalPage(object):
     _head = """<!DOCTYPE HTML>
 <head>
-    <title>Inheritance</title>
+    <title>What Does the Fox Say</title>
 </head>
 <body>"""
     _content = ''
