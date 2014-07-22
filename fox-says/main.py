@@ -9,21 +9,15 @@ class MainHandler(webapp2.RequestHandler):
         animal = Animal()
 
         if self.request.GET:
-
             if self.request.GET.has_key("animal"):
-
                 if self.request.GET["animal"] == "horse":
                     animal = Horse()
-
                 if self.request.GET["animal"] == "cow":
                     animal = Cow()
-
                 if self.request.GET["animal"] == "fox":
                     animal = Fox()
-
-        a.content = animal.roar()
-
-        self.response.write(a.content)
+        a.content2 = animal.roar()
+        self.response.write(a.print_out())
 
 
 class AnimalPage(object):
@@ -42,6 +36,9 @@ class AnimalPage(object):
 
     footer = """</div></body>
 </html>"""
+    content2 = """
+
+    """
 
     content = """
 
@@ -49,8 +46,7 @@ class AnimalPage(object):
         <p> Though there is great diversity in the animal kingdom, animals
         can be distinguished from the other kingdoms by a set of characteristics.
         Though other types of life may share some of these characteristics, the set
-        of characteristics as a whole provide a distinction from the other kingdoms.
-        The set of characteristics provided by Audesirk and Audesirk are: </p>
+        of characteristics as a whole provide a distinction from the other kingdoms.</p>
 
         <ol>
             <li>    Animals are multicellular. </li>
@@ -62,43 +58,40 @@ class AnimalPage(object):
             <li>    Animals are able to respond quickly to external stimuli as a result of
             nerve cells, muscle or contractile tissue, or both. </li>
         </ol>
-
-
-
-
     """
+    closer = ""
 
     def __init__(self):
         pass
 
-    # def print_out(self):
-    #     return self._header + self._content + self._close
-    #
-    #
-    # def render(self):
-    #     # generate content
-    #     self._content += self._header.format(**locals())
-    #
-    #     if bool(self.animal):
-    #         self._content += "<div class='names'>"
-    #         self._content += "<p>" + "Animal name: " + self.animal.name + "</p>"
-    #         self._content += "<p>" + "Phylum: " + self.animal.phylum + "</p>"
-    #         self._content += "<p>" + "Classification: " + self.animal.classification + "</p>"
-    #         self._content += "<p>" + "Family: " + self.animal.family + "</p>"
-    #         self._content += "<p>" + "Genus: " + self.animal.genus + "</p>"
-    #         self._content += "<p>" + "Average: " + str(self.animal.average) + "</p>"
-    #         self._content += "<p>" + "Habitat: " + self.animal.habitat + "</p>"
-    #         self._content += "<p>" + "Geo: " + self.animal.geo + "</p>"
-    #         self._content += "<p>" + "Sound: " + self.animal._sound + "</p>"
-    #         self._content += "</div>"
-    #     self._content += self.footer
+    def print_out(self):
+        return self.header + self.content + self.content2 + self.closer
+
+
+    def render(self):
+        # generate content
+        self.content += self.header.format(**locals())
+
+        if bool(self.animal):
+            self.content += "<div class='names'>"
+            self.content += "<p>" + "Animal name: " + self.animal.name + "</p>"
+            self.content += "<p>" + "Phylum: " + self.animal.phylum + "</p>"
+            self.content += "<p>" + "Classification: " + self.animal.classification + "</p>"
+            self.content += "<p>" + "Family: " + self.animal.family + "</p>"
+            self.content += "<p>" + "Genus: " + self.animal.genus + "</p>"
+            self.content += "<p>" + "Average: " + str(self.animal.average) + "</p>"
+            self.content += "<p>" + "Habitat: " + self.animal.habitat + "</p>"
+            self.content += "<p>" + "Geo: " + self.animal.geo + "</p>"
+            self.content += "<p>" + "Sound: " + self.animal._sound + "</p>"
+            self.content += "</div>"
+        self.content += self.footer
 
 
 class Animal(object):
     def __init__(self):
         self._sound = "meow"
 
-        self.name = ""
+        self.name = "qwdq"
         self.phylum = ""
         self.classification = ""
         self.family = ""
@@ -123,6 +116,8 @@ class Fox(Animal):
         self.geo = ""
         self._sound = "Wa-pa-pa-pa-pa-pa-pow"
 
+    def roar(self):
+        return self._sound
 
 class Cow(Animal):
     def __init__(self):
@@ -136,6 +131,9 @@ class Cow(Animal):
         self.geo = ""
         self._sound = "Moo"
 
+    def roar(self):
+        return self._sound
+
 
 class Horse(Animal):
     def __init__(self):
@@ -148,6 +146,10 @@ class Horse(Animal):
         self.habitat = ""
         self.geo = ""
         self._sound = "Neigh"
+
+    def roar(self):
+        return self._sound
+
 
 
 app = webapp2.WSGIApplication([
