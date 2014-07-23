@@ -16,7 +16,8 @@ class MainHandler(webapp2.RequestHandler):
                     animal = Cow()
                 if self.request.GET["animal"] == "fox":
                     animal = Fox()
-        a.content2 = animal.roar()
+        a.content2 = animal.sound()
+        a.render()
         self.response.write(a.print_out())
 
 
@@ -58,6 +59,12 @@ class AnimalPage(object):
             <li>    Animals are able to respond quickly to external stimuli as a result of
             nerve cells, muscle or contractile tissue, or both. </li>
         </ol>
+
+        <button>Fox</button>
+        <button>Horse</button>
+        <button>Cow</button>
+        <br/>
+        <div class="space"></div>
     """
     closer = ""
 
@@ -67,9 +74,7 @@ class AnimalPage(object):
     def print_out(self):
         return self.header + self.content + self.content2 + self.closer
 
-
     def render(self):
-        # generate content
         self.content += self.header.format(**locals())
 
         if bool(self.animal):
@@ -91,42 +96,42 @@ class Animal(object):
     def __init__(self):
         self._sound = "meow"
 
-        self.name = "qwdq"
-        self.phylum = ""
-        self.classification = ""
-        self.family = ""
-        self.genus = ""
-        self.average = 0
-        self.habitat = ""
-        self.geo = ""
+        self.name = "Lion"
+        self.phylum = "Chordata"
+        self.classification = "Mammalia"
+        self.family = "Felidae"
+        self.genus = "Panthera"
+        self.average = str(10-14) + " Years"
+        self.habitat = "Savannah"
+        self.geo = "Africa"
 
-    def roar(self):
+    def sound(self):
         return self._sound
 
 
 class Fox(Animal):
     def __init__(self):
         self.name = "Fox"
-        self.phylum = ""
-        self.classification = ""
-        self.family = ""
-        self.genus = ""
-        self.average = 0
-        self.habitat = ""
-        self.geo = ""
+        self.phylum = "Chordata"
+        self.classification = "Mammalia"
+        self.family = "Canidae"
+        self.genus = "Vulpes"
+        self.average = str(5) + "Years"
+        self.habitat = "Forests and deserts"
+        self.geo = "Varies"
         self._sound = "Wa-pa-pa-pa-pa-pa-pow"
 
-    def roar(self):
+    def sound(self):
         return self._sound
 
 class Cow(Animal):
     def __init__(self):
         self.name = "Cow"
-        self.phylum = ""
+        self.phylum = "Chordata"
         self.classification = ""
         self.family = ""
         self.genus = ""
-        self.average = 0
+        self.average = str(15) + "Years"
         self.habitat = ""
         self.geo = ""
         self._sound = "Moo"
@@ -142,12 +147,12 @@ class Horse(Animal):
         self.classification = ""
         self.family = ""
         self.genus = ""
-        self.average = 0
+        self.average = str(25-30) + "Years"
         self.habitat = ""
         self.geo = ""
         self._sound = "Neigh"
 
-    def roar(self):
+    def sound(self):
         return self._sound
 
 
