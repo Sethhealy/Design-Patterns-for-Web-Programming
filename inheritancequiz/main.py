@@ -14,7 +14,7 @@ class MainHandler(webapp2.RequestHandler):
 class Display(object):
     _head = """<!DOCTYPE HTML>
 <head>
-    <title>Inheritance</title>
+    <title>Inheritance Quiz</title>
 </head>
 <body>"""
     _content = ''
@@ -37,7 +37,7 @@ class Submission(Display):
     def inputinfo(self):
         _inputs=''
         for i in self._inputs:
-            # for each item in our array
+            #i put them in an array so they would place nicely
             _inputs += '<input type="' +i['type']+ '" name="'+i['name']+'" '
             if 'placeholder' in i:
                 _inputs += ' placeholder="' + i['placeholder']+ '"'
