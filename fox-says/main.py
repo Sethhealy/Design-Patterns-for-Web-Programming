@@ -16,7 +16,7 @@ class MainHandler(webapp2.RequestHandler):
                     animal = Cow()
                 if self.request.GET["animal"] == "fox":
                     animal = Fox()
-        a.content2 = animal.sound()
+        a.animal = animal
         a.render()
         self.response.write(a.print_out())
 
@@ -59,12 +59,14 @@ class AnimalPage(object):
             <li>    Animals are able to respond quickly to external stimuli as a result of
             nerve cells, muscle or contractile tissue, or both. </li>
         </ol>
-
-        <button>Fox</button>
-        <button>Horse</button>
-        <button>Cow</button>
-        <br/>
+        <div class='links'>
+        <a href="/?animal=fox">Fox</a>
         <div class="space"></div>
+        <a href="/?animal=cow">Cow</a>
+        <div class="space"></div>
+        <a href="/?animal=horse">Horse</a>
+        <div class="space"></div>
+        </div>
     """
     closer = ""
 
@@ -79,12 +81,13 @@ class AnimalPage(object):
 
         if bool(self.animal):
             self.content += "<div class='names'>"
+            self.content += '<img src="/images/' + self.animal.image + '.jpg" />'
             self.content += "<p>" + "Animal name: " + self.animal.name + "</p>"
             self.content += "<p>" + "Phylum: " + self.animal.phylum + "</p>"
             self.content += "<p>" + "Classification: " + self.animal.classification + "</p>"
             self.content += "<p>" + "Family: " + self.animal.family + "</p>"
             self.content += "<p>" + "Genus: " + self.animal.genus + "</p>"
-            self.content += "<p>" + "Average: " + str(self.animal.average) + "</p>"
+            self.content += "<p>" + "Average: " + str(self.animal.average) + " Years</p>"
             self.content += "<p>" + "Habitat: " + self.animal.habitat + "</p>"
             self.content += "<p>" + "Geo: " + self.animal.geo + "</p>"
             self.content += "<p>" + "Sound: " + self.animal._sound + "</p>"
@@ -95,13 +98,13 @@ class AnimalPage(object):
 class Animal(object):
     def __init__(self):
         self._sound = "meow"
-
+        self.image= "lion"
         self.name = "Lion"
         self.phylum = "Chordata"
         self.classification = "Mammalia"
         self.family = "Felidae"
         self.genus = "Panthera"
-        self.average = str(10-14) + " Years"
+        self.average = "10-14"
         self.habitat = "Savannah"
         self.geo = "Africa"
 
@@ -111,12 +114,13 @@ class Animal(object):
 
 class Fox(Animal):
     def __init__(self):
+        self.image= "fox"
         self.name = "Fox"
         self.phylum = "Chordata"
         self.classification = "Mammalia"
         self.family = "Canidae"
         self.genus = "Vulpes"
-        self.average = str(5) + "Years"
+        self.average = "5"
         self.habitat = "Forests and deserts"
         self.geo = "Varies"
         self._sound = "Wa-pa-pa-pa-pa-pa-pow"
@@ -126,12 +130,13 @@ class Fox(Animal):
 
 class Cow(Animal):
     def __init__(self):
+        self.image= "cow"
         self.name = "Cow"
         self.phylum = "Chordata"
         self.classification = "Mammalia"
         self.family = "Bovidae"
         self.genus = "Bos"
-        self.average = str(15) + "Years"
+        self.average = "15"
         self.habitat = "Varies"
         self.geo = "Varies"
         self._sound = "Moo"
@@ -142,12 +147,13 @@ class Cow(Animal):
 
 class Horse(Animal):
     def __init__(self):
+        self.image= "horse"
         self.name = "Horse"
         self.phylum = "Chordata"
         self.classification = "Mammalia"
         self.family = "Equidae"
         self.genus = "Equus"
-        self.average = str(25-30) + "Years"
+        self.average = "25-30"
         self.habitat = "Varies"
         self.geo = "Varies"
         self._sound = "Neigh"

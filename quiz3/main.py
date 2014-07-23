@@ -26,7 +26,7 @@ class Display(object):
 
 class Submission(Display):
     _inputs = ''
-    form_start = "<form method=\"GET\" action=""/>"
+    form_start = "<form method=GET action=""/>"
     form_end="</form>"
 
     def __init__(self):
