@@ -3,7 +3,7 @@ import webapp2
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         s = Submission()
-        s.inputs=[{'type':'text', 'placeholder':'First Name', 'name':'fname'},
+        s._inputs=[{'type':'text', 'placeholder':'First Name', 'name':'fname'},
                   {'type':'text', 'placeholder':'Last Name', 'name':'lname'},
                 {'type':'text','placeholder':'Email','name':'email'},
                 {'type':'submit', 'name':'submit', 'value':'Go'}]
@@ -24,15 +24,11 @@ class Display(object):
 </body>
 </html>"""
 
-    def __init__(self):
-        pass
-
-
 class Submission(Display):
 
 
-
-
+    _inputs=''
+    form_start="<form method=GET action="">"
 
 
 
