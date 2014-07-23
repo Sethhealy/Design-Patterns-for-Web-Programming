@@ -47,7 +47,7 @@ class Submission(Display):
         return _inputs
 
     def print_out(self):
-        return self._head + self.form_start + self.inputinfo(self) + \
+        return self._head + self.form_start + self.inputinfo() + \
             self.form_end + self._close
 
 
