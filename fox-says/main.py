@@ -128,12 +128,12 @@ class Cow(Animal):
     def __init__(self):
         self.name = "Cow"
         self.phylum = "Chordata"
-        self.classification = ""
-        self.family = ""
-        self.genus = ""
+        self.classification = "Mammalia"
+        self.family = "Bovidae"
+        self.genus = "Bos"
         self.average = str(15) + "Years"
-        self.habitat = ""
-        self.geo = ""
+        self.habitat = "Varies"
+        self.geo = "Varies"
         self._sound = "Moo"
 
     def roar(self):
@@ -143,13 +143,13 @@ class Cow(Animal):
 class Horse(Animal):
     def __init__(self):
         self.name = "Horse"
-        self.phylum = ""
-        self.classification = ""
-        self.family = ""
-        self.genus = ""
+        self.phylum = "Chordata"
+        self.classification = "Mammalia"
+        self.family = "Equidae"
+        self.genus = "Equus"
         self.average = str(25-30) + "Years"
-        self.habitat = ""
-        self.geo = ""
+        self.habitat = "Varies"
+        self.geo = "Varies"
         self._sound = "Neigh"
 
     def sound(self):
