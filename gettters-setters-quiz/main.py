@@ -17,10 +17,10 @@ class Page(object):
 
 
     counter = """
-<button> Counter Clicker </button>
+<button> Counter Clicker </button><br/>
 """
 
-    content = "Counter starts"
+    counting = 0
     closer = """
     </body>
 </html>"""
@@ -30,7 +30,7 @@ class Page(object):
         self.count = 0
 
     def print_out(self):
-        return self.count + self.content + self.closer
+        return str(self.counter) + str(self.counting) + self.closer
 
 
 class Counter(Page):
