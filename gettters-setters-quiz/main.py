@@ -4,8 +4,7 @@ import webapp2
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         p = Page()
-        p.content = "Start the Counter"
-        self.response.write(p.printout())
+        self.response.write(p.print_out())
 
 
 class Page(object):
@@ -17,31 +16,29 @@ class Page(object):
 """
 
 
-__counter = """
+    counter = """
 <button> Counter Clicker </button>
 """
 
-__content = "Counter starts"
-closer = """
+    content = "Counter starts"
+    closer = """
     </body>
 </html>"""
 
 
-def print_out(self):
-    return self.header + self.__content + self.closer + self.__counter
+    def __init__(self):
+        self.count = 0
 
-
-@__content.setter
-def content(self, c):
-    self.__content = c
+    def print_out(self):
+        return self.count + self.content + self.closer
 
 
 class Counter(Page):
-    def counter(count):
-        count= 0
+    def counter(self):
+        self.count= 0
 
     def button(self):
-        counting = count + 1
+        self.counting = self.count + 1
 
 
 
