@@ -37,20 +37,27 @@ class MovieView(object):
     def create_display(self):
         for do in self.__dos:
             self.content += "Title: " + do.title
+            self.content += "Vote average: " + do.vote_average
+            self.content += "Vote count: " + do.vote_count
             self.content += "(" + do.release_date + ')'
             self.content += "Overview: " + do.overview
-            self.content += "<img src=\"images/" + do.backdrop_path + '.png" />'
+            self.content += "<img src=\"images/" + do.backdrop_path + '.jpg" />'
             self.content += "<br />"
-            self.content += "Day: " + do.day
-            self.content += "(" + do.date + ')'
-            self.content += "High: " + do.high + '   Low: ' + do.low
-            self.content += "<img src=\"images/" + do.code + '.png" />'
+            self.content += "Tagline: " + do.tagline
+            self.content += "(" + do.budget + ')'
+            self.content += "High: " + do.runtime
+            self.content += "<img src=\"images/" + do.poster_path + '.jpg" />'
             self.content += "<br />"
-            self.content += "Day: " + do.day
-            self.content += "(" + do.date + ')'
-            self.content += "High: " + do.high + '   Low: ' + do.low
-            self.content += "<img src=\"images/" + do.code + '.png" />'
+            self.content += "Adult: " + do.adult
+            self.content += "(" + do.revenue + ')'
+            self.content += "Status: " + do.status
+            self.content += "Status: " + do.belongs_to_collection
             self.content += "<br />"
+            self.content += "Popularity: " + do.popularity
+            self.content += "Spoken Language: " + do.spoken_language
+            self.content += "Production Companies: " + do.production_companies
+            self.content += "Production countries: " + do.production_countries
+
 
         print self.content
 
