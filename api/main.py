@@ -19,7 +19,6 @@ class MainHandler(webapp2.RequestHandler):
 
         print jsondoc['genres'][0]['id']
 
-
         movieModel = Moviemodel()
         movie = movieModel.movie('title')
 
@@ -70,7 +69,6 @@ class MovieView(object):
         self.content += "Spoken Language: " + self.__movie.spoken_language
         self.content += "Production Companies: " + self.__movie.production_companies
         self.content += "Production countries: " + self.__movie.production_countries
-        self.content += "Status: " + self.__movie.status
         self.content += "<a href=" + self.__movie.homepage + '</a>'
 
         print self.content
@@ -83,16 +81,41 @@ class Moviemodel(object):
     def __init__(self):
         self.url = "https://api.themoviedb.org/3/movie/550?api_key=9ada58564fcdacbd21d0aca3ec33f0f1"
 
-    # create a request to send to server
+        # create a request to send to server
         request = urllib2.Request(self.url)
         opener = urllib2.build_opener()
         # sends the request and gets response
         self.data = opener.open(request)
+        self.parse(self)
 
 
-    def movie(self, title):
-        pass
+    def parse(self, title):
+        movie=[]
 
+
+
+        for item in movie:
+            do = MovieDataObject()
+            do.title = item.attributes['title'].value
+            do.vote_average = item.attributes['vote_average'].value
+            do.vote_count = item.attributes['vote_count'].value
+            do.release_date = item.attributes['release_date'].value
+            do.overview = item.attributes['overview'].value
+            do.backdrop_path = item.attributes['backdrop_path'].value
+            do.tagline = item.attributes['tagline'].value
+            do.budget = item.attributes['budget'].value
+            do.runtime = item.attributes['runtime'].value
+            do.poster_path = item.attributes['poster_path'].value
+            do.adult = item.attributes['adult'].value
+            do.revenue = item.attributes['revenue'].value
+            do.status = item.attributes['status'].value
+            do.belongs_to_collection = item.attributes['belongs_to_collection'].value
+            do.popularity = item.attributes['popularity'].value
+            do.spoken_language = item.attributes['spoken_language'].value
+            do.production_companies = item.attributes['production_companies'].value
+            do.production_countries = item.attributes['production_countries'].value
+            do.homepage = item.attributes['homepage'].value
+            
 
 class MovieDataObject(object):
     def __init__(self):
