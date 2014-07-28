@@ -1,5 +1,5 @@
 import webapp2
-from urllib2 import Request, urlopen
+from urllib2 import Request, urlopen, build_opener
 import json
 
 
@@ -7,6 +7,11 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Hello world!')
 
+
+
+        f = Page()
+        f.inputs = [{'type': 'text', 'placeholder': 'Movies', 'name': 'movie'},
+                    {'type': 'submit', 'name': 'submit', 'value': 'Get Your Movie'}]
         headers = {
             'Accept': 'application/json'
         }
@@ -17,10 +22,17 @@ class MainHandler(webapp2.RequestHandler):
 
         jsondoc = json.load(response_body)
 
+
+        if self.request.GET:
+            movie = self.request.GET['movie']
+            mm = Moviemodel(movie)
+
+            wv = MovieView()
+
         print jsondoc['genres'][0]['id']
 
-        movieModel = Moviemodel()
-        movie = movieModel.movie('title')
+        # movieModel = Moviemodel()
+        # movie = movieModel.movie('title')
 
         page = Page()
 
@@ -81,10 +93,9 @@ class Moviemodel(object):
     def __init__(self):
         self.url = "https://api.themoviedb.org/3/movie/550?api_key=9ada58564fcdacbd21d0aca3ec33f0f1"
 
-        # create a request to send to server
-        request = urllib2.Request(self.url)
-        opener = urllib2.build_opener()
-        # sends the request and gets response
+
+        request = Request(self.url)
+        opener = build_opener()
         self.data = opener.open(request)
         self.parse(self)
 
@@ -115,7 +126,7 @@ class Moviemodel(object):
             do.production_companies = item.attributes['production_companies'].value
             do.production_countries = item.attributes['production_countries'].value
             do.homepage = item.attributes['homepage'].value
-            
+
 
 class MovieDataObject(object):
     def __init__(self):

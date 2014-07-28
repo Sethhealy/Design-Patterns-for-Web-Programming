@@ -32,7 +32,7 @@ class MainHandler(webapp2.RequestHandler):
 class WeatherView(object):
     def __init__(self):
         self.__dos = []
-        self.content = ''
+        self.content =''
 
     @property
     def dos(self):
