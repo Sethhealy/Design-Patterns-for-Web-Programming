@@ -18,7 +18,7 @@ class MainHandler(webapp2.RequestHandler):
             wv = MovieView()
 
         moviemodel = Moviemodel()
-        movie = moviemodel.movie('the matrix')
+        movie = moviemodel.movie('iron man')
 
         page = Page()
 
@@ -164,12 +164,15 @@ class Page(object):
     <title>BestMovies</title>
 </head>
 <body>"""
-    _content = """
+    _content = '''
+
+    <input type="search"><br>
+    <input type="submit">
 
     <h1> {self.title} </h1>
-    <p> {self.vote_count} {self.vote_average}
+    <p> {self.vote_count} {self.vote_average} </p>
 
-"""
+'''
     _close = """
 </body>
 </html>"""
