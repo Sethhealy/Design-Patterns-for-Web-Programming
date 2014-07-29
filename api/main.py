@@ -7,21 +7,9 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Hello world!')
 
-
-
         f = Page()
         f.inputs = [{'type': 'text', 'placeholder': 'Movies', 'name': 'movie'},
                     {'type': 'submit', 'name': 'submit', 'value': 'Get Your Movie'}]
-        headers = {
-            'Accept': 'application/json'
-        }
-        request = Request('https://api.themoviedb.org/3/movie/550?api_key=9ada58564fcdacbd21d0aca3ec33f0f1',
-                          headers=headers)
-
-        response_body = urlopen(request)
-
-        jsondoc = json.load(response_body)
-
 
         if self.request.GET:
             movie = self.request.GET['movie']
@@ -29,17 +17,17 @@ class MainHandler(webapp2.RequestHandler):
 
             wv = MovieView()
 
-        print jsondoc['genres'][0]['id']
+        moviemodel = Moviemodel()
+        movie = moviemodel.movie('title')
 
-        # movieModel = Moviemodel()
-        # movie = movieModel.movie('title')
+        print movie.title
 
         page = Page()
 
-        movieView = MovieView()
-        movieView.movie = movie
+        movieview = MovieView()
+        movieview.movie = movie
 
-        page._content = movieView.content
+        page._content = movieview.content
 
         self.response.write(page.print_out())
 
@@ -54,7 +42,7 @@ class MovieView(object):
         pass
 
     @movie.setter
-    def movie(self, movie):
+    def __movie(self, movie):
         self.__movie = movie
         self.create_display()
 
@@ -85,47 +73,66 @@ class MovieView(object):
 
         print self.content
 
+    @movie.setter
+    def movie(self, value):
+        self._movie = value
+
 
 class Moviemodel(object):
     """THis is the model class. it is sending a request to the yahoo api and getting
     xml from the api. It the sorts it into a data object"""
 
     def __init__(self):
-        self.url = "https://api.themoviedb.org/3/movie/550?api_key=9ada58564fcdacbd21d0aca3ec33f0f1"
+        self.__movie = MovieDataObject()
 
+    def movie(self, title):
 
-        request = Request(self.url)
-        opener = build_opener()
-        self.data = opener.open(request)
-        self.parse(self)
+        headers = {
+            'Accept': 'application/json'
+        }
 
+        # search
 
-    def parse(self, title):
-        movie=[]
+        searchRequest = Request('http://api.themoviedb.org/3/search/movie?api_key=9ada58564fcdacbd21d0aca3ec33f0f1&query=matrix', headers=headers)
 
+        searchResponse = urlopen(searchRequest)
 
+        searchObject = json.load(searchResponse)
 
-        for item in movie:
-            do = MovieDataObject()
-            do.title = item.attributes['title'].value
-            do.vote_average = item.attributes['vote_average'].value
-            do.vote_count = item.attributes['vote_count'].value
-            do.release_date = item.attributes['release_date'].value
-            do.overview = item.attributes['overview'].value
-            do.backdrop_path = item.attributes['backdrop_path'].value
-            do.tagline = item.attributes['tagline'].value
-            do.budget = item.attributes['budget'].value
-            do.runtime = item.attributes['runtime'].value
-            do.poster_path = item.attributes['poster_path'].value
-            do.adult = item.attributes['adult'].value
-            do.revenue = item.attributes['revenue'].value
-            do.status = item.attributes['status'].value
-            do.belongs_to_collection = item.attributes['belongs_to_collection'].value
-            do.popularity = item.attributes['popularity'].value
-            do.spoken_language = item.attributes['spoken_language'].value
-            do.production_companies = item.attributes['production_companies'].value
-            do.production_countries = item.attributes['production_countries'].value
-            do.homepage = item.attributes['homepage'].value
+        movieId = searchObject['results'][0]['id']
+
+        # movie
+
+        movieRequest = Request('https://api.themoviedb.org/3/search/' + 'movieId' + '?api_key=9ada58564fcdacbd21d0aca3ec33f0f1', headers=headers)
+
+        movieResponse = urlopen(movieRequest)
+
+        movieObject = json.load(movieResponse)
+
+        # parse
+
+        do = MovieDataObject()
+        do.title = movieObject['title']
+        do.vote_average = movieObject['vote_average']
+        do.vote_count = movieObject['vote_count']
+        do.release_date = movieObject['release_date']
+        do.overview = movieObject['overview']
+        do.backdrop_path = movieObject['backdrop_path']
+        do.tagline = movieObject['tagline']
+        do.budget = movieObject['budget']
+        do.runtime = movieObject['runtime']
+        do.poster_path = movieObject['poster_path']
+        do.adult = movieObject['adult']
+        do.revenue = movieObject['revenue']
+        do.status = movieObject['status']
+        do.belongs_to_collection = movieObject['belongs_to_collection']
+        do.popularity = movieObject['popularity']
+        do.spoken_language = movieObject['spoken_language']
+        do.production_companies = movieObject['production_companies']
+        do.production_countries = movieObject['production_countries']
+        do.homepage = movieObject['homepage']
+
+        return do
 
 
 class MovieDataObject(object):
