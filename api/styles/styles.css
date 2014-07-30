@@ -1,0 +1,82 @@
+.wrapper{
+    width:96%;
+    margin: 0 auto;
+}
+
+body{
+    background-color: #00d5fa;
+    background-image: url(http://www.transparenttextures.com/patterns/60-lines.png);
+    font-family:arial;
+}
+
+form{
+    width:300px;
+    float:right;
+}
+
+header{
+    width:500px;
+    float:left;
+}
+.clear{
+    clear:both;
+}
+
+.poster{
+    width:300px;
+    float:left;
+}
+.title{
+    width:100px;
+    margin:0 auto;
+    float:left;
+    text-align:center;
+    padding-left:20px;
+}
+
+.large{
+    width:150px;
+    float:right;
+    text-align:right;
+}
+
+.space{
+    margin-right:5px;
+}
+
+.information{
+    width:500px;
+    margin:0 auto;
+}
+
+.overview{
+    width:600px;
+    margin: 0 auto;
+    margin-top:30px;
+    padding-left:50px;
+
+}
+
+.tag{
+    width:600px;
+    margin:0 auto;
+    margin-top:20px;
+}
+
+.backdrop{
+    width:500px;
+    margin:0 auto;
+    margin-top: 40px;
+    padding-left:330px;
+}
+
+.money{
+    width:300px;
+    margin-top:20px;
+    float:left;
+    clear:both;
+}
+
+.form{
+    color:blue;
+}

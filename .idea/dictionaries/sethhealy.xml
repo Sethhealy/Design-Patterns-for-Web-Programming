@@ -9,10 +9,17 @@
       <w>imdb</w>
       <w>jsondoc</w>
       <w>lightblue</w>
+      <w>movieid</w>
       <w>moviemodel</w>
+      <w>movierequest</w>
+      <w>movieresponse</w>
       <w>movieview</w>
       <w>multicellular</w>
       <w>placerholder</w>
+      <w>safetitle</w>
+      <w>searchobject</w>
+      <w>searchrequest</w>
+      <w>searchresponse</w>
       <w>tagline</w>
     </words>
   </dictionary>

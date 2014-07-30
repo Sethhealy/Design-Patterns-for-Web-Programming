@@ -5,23 +5,27 @@ import json
 
 
 class MainHandler(webapp2.RequestHandler):
+    # calling the function for my pulling the data
     def get(self):
-
+        # Calling my page function and naming it page so i can use it later
         page = Page()
-        page.inputs = [{'type': 'text', 'placeholder': 'Movies', 'name': 'movie'},
-                       {'type': 'submit', 'name': 'submit', 'value': 'Get Your Movie'}]
-
+        #here i am using an if statement for my GET request.
         if self.request.GET:
             queryMovie = self.request.GET['movie']
+            #I named my movieModel mm for later usage
             mm = Moviemodel()
+            #im adding a variable dataMovie and making it equal to mm.movie(queryMovie) for my searching
             dataMovie = mm.movie(queryMovie)
+            # Im using mv for movieView function so i can use it later
+            mv = MovieView()
+            # im using mv.movie=dataMovie for viewing of the data
+            mv.movie = dataMovie
 
-            wv = MovieView()
-            wv.movie = dataMovie
-
-            page._content += wv.content
-
+            #calling my page content to add my movie view content
+            page._content += mv.content
+        # my else is  set in place for my new view for all my added content
         else:
+            #Im naming homepage= HomeView function that im using later
             homePage = HomeView()
             page._content = homePage.content
 
@@ -44,33 +48,34 @@ class MovieView(object):
 
 
     def create_display(self):
-        self.content += "<div class='title'>" + self.__movie.title + '</div>'
-        self.content += '<div class="release">' + "(" + self.__movie.release_date + ')' + '</div>'
-        self.content += "<div class='large'>" "Vote average: " + str(self.__movie.vote_average) + '</div>'
-        self.content += '<div class="large">' "Vote count: " + str(self.__movie.vote_count) + '</div>'
-
-        self.content += '<div class="overview">' + "Overview: " + self.__movie.overview + '</div>'
-
-        if self.__movie.backdrop_path:
-            self.content += '<div class="backdrop">' "<img src=https://image.tmdb.org/t/p/w300" + self.__movie.backdrop_path + '" />' \
+        self.content += "<br />"
+        if self.__movie.poster_path:
+            self.content += "<div class='poster'>" + '<img src="https://image.tmdb.org/t/p/w185' + self.__movie.poster_path + '" />' \
                             + '</div>'
+        self.content += "<div class='information'>" + "<div class='title'>" + self.__movie.title
+        self.content += '<div class="space">' "</div>" "(" + self.__movie.release_date + ')' + '</div>'
+        self.content += "<div class='large'>" "Vote average: " + str(self.__movie.vote_average) + '</div>'
+        self.content += '<div class="large">' "Vote count: " + str(self.__movie.vote_count) + '</div>'+ "</div>"
+        self.content += "<br />"
+        self.content += '<div class="overview">' + "Overview: " \
+                        + self.__movie.overview + '</div>'
+        self.content += '<div class="tag">' + "Tagline: " + self.__movie.tagline + '</div>'
+
 
         self.content += "<br />"
-        self.content += "Tagline: " + self.__movie.tagline
-        self.content += "(" + str(self.__movie.budget) + ')'
-        self.content += str(self.__movie.runtime)
 
-        if self.__movie.poster_path:
-            self.content += '<img src="https://image.tmdb.org/t/p/w185' + self.__movie.poster_path + '" />'
+        self.content += "<div class='money'>" + '<div class="budget">' + "Budget:" + " (" + str(self.__movie.budget) + ')' + '</div>'
+        self.content += '<div class="runtime">' + "Runtime:" + str(self.__movie.runtime) + " Minutes" + "</div>"
         self.content += "<br />"
         if self.__movie.adult:
-            self.content += "Adult: " + str(self.__movie.adult)
-        self.content += "(" + str(self.__movie.revenue) + ')'
-        self.content += "Status: " + self.__movie.status
-        self.content += "<br />"
+            self.content += "<div class='adult'>" + "Adult: " + str(self.__movie.adult) + '</div>'
+        self.content += '<div class="revenue">' + 'Revenue: ' + "(" + str(self.__movie.revenue) + ')' + '</div>'
+        self.content += "<div class= 'status'>" + "Status: " + self.__movie.status + '</div>'
         self.content += "Popularity: " + str(self.__movie.popularity)
-        self.content += "<a href=" + self.__movie.homepage + '</a>'
-
+        self.content += "<a href=" + self.__movie.homepage + '</a>' + "</div>"
+        if self.__movie.backdrop_path:
+                    self.content += '<div class="backdrop">' "<img src=https://image.tmdb.org/t/p/w300" + self.__movie.backdrop_path + '" />' \
+                                    + '</div>'
         print self.content
 
 
@@ -82,29 +87,29 @@ class Moviemodel(object):
 
         # search
 
-        safeTitle = quote(title, safe="%/:=&?~#+!$,;'@()*[]")
+        safetitle = quote(title, safe="%/:=&?~#+!$,;'@()*[]")
 
-        print safeTitle
+        print safetitle
 
-        searchRequest = Request(
-            'http://api.themoviedb.org/3/search/movie?api_key=9ada58564fcdacbd21d0aca3ec33f0f1&query=' + safeTitle,
+        searchrequest = Request(
+            'http://api.themoviedb.org/3/search/movie?api_key=9ada58564fcdacbd21d0aca3ec33f0f1&query=' + safetitle,
             headers=headers)
 
-        searchResponse = urlopen(searchRequest)
+        searchresponse = urlopen(searchrequest)
 
-        searchObject = json.load(searchResponse)
+        searchobject = json.load(searchresponse)
 
-        movieId = searchObject['results'][0]['id']
+        movieid = searchobject['results'][0]['id']
 
         # movie
 
-        movieRequest = Request(
-            'https://api.themoviedb.org/3/movie/' + str(movieId) + '?api_key=9ada58564fcdacbd21d0aca3ec33f0f1',
+        movierequest = Request(
+            'https://api.themoviedb.org/3/movie/' + str(movieid) + '?api_key=9ada58564fcdacbd21d0aca3ec33f0f1',
             headers=headers)
 
-        movieResponse = urlopen(movieRequest)
+        movieresponse = urlopen(movierequest)
 
-        movieObject = json.load(movieResponse)
+        movieObject = json.load(movieresponse)
 
         # parse
 
@@ -160,24 +165,27 @@ class HomeView(object):
         self.content = ''
 
 
+
 class Page(object):
     _head = """<!DOCTYPE HTML>
 <head>
     <title>BestMovies</title>
+    <link rel="stylesheet" href="styles/styles.css" type="text/css"/>
 </head>
 <body>
-
+<div class="wrapper">
     <header>Welcome to where the best movies gather</header>
 
-    <form action="/">
+
+    <div class="form"><form action="/">
         <input type="search" name="movie" required>
         <input type="submit">
-    </form>
-
-    </header>
+    </form></div>
+<div class="clear"></div>
 """
     _content = ''
     _close = """
+    </div>
 </body>
 </html>"""
 
