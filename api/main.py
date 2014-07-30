@@ -7,25 +7,23 @@ import json
 class MainHandler(webapp2.RequestHandler):
     def get(self):
 
-        f = Page()
-        f.inputs = [{'type': 'text', 'placeholder': 'Movies', 'name': 'movie'},
-                    {'type': 'submit', 'name': 'submit', 'value': 'Get Your Movie'}]
+        page = Page()
+        page.inputs = [{'type': 'text', 'placeholder': 'Movies', 'name': 'movie'},
+                       {'type': 'submit', 'name': 'submit', 'value': 'Get Your Movie'}]
 
         if self.request.GET:
-            movie = self.request.GET['movie']
-            mm = Moviemodel(movie)
+            queryMovie = self.request.GET['movie']
+            mm = Moviemodel()
+            dataMovie = mm.movie(queryMovie)
 
             wv = MovieView()
+            wv.movie = dataMovie
 
-        moviemodel = Moviemodel()
-        movie = moviemodel.movie('iron man')
+            page._content += wv.content
 
-        page = Page()
-
-        movieview = MovieView()
-        movieview.movie = movie
-
-        page._content = movieview.content
+        else:
+            homePage = HomeView()
+            page._content = homePage.content
 
         self.response.write(page.print_out())
 
@@ -46,35 +44,37 @@ class MovieView(object):
 
 
     def create_display(self):
-        self.content += self.__movie.title
-        self.content += "Vote average: " + str(self.__movie.vote_average)
-        self.content += "Vote count: " + str(self.__movie.vote_count)
-        self.content += "(" + self.__movie.release_date + ')'
-        self.content += "Overview: " + self.__movie.overview
-        self.content += "<img src=https://image.tmdb.org/t/p/w300" + self.__movie.backdrop_path + '" />'
+        self.content += "<div class='title'>" + self.__movie.title + '</div>'
+        self.content += '<div class="release">' + "(" + self.__movie.release_date + ')' + '</div>'
+        self.content += "<div class='large'>" "Vote average: " + str(self.__movie.vote_average) + '</div>'
+        self.content += '<div class="large">' "Vote count: " + str(self.__movie.vote_count) + '</div>'
+
+        self.content += '<div class="overview">' + "Overview: " + self.__movie.overview + '</div>'
+
+        if self.__movie.backdrop_path:
+            self.content += '<div class="backdrop">' "<img src=https://image.tmdb.org/t/p/w300" + self.__movie.backdrop_path + '" />' \
+                            + '</div>'
+
         self.content += "<br />"
         self.content += "Tagline: " + self.__movie.tagline
         self.content += "(" + str(self.__movie.budget) + ')'
-        self.content += "High: " + str(self.__movie.runtime)
-        self.content += '<img src="https://image.tmdb.org/t/p/w185' + self.__movie.poster_path + '" />'
+        self.content += str(self.__movie.runtime)
+
+        if self.__movie.poster_path:
+            self.content += '<img src="https://image.tmdb.org/t/p/w185' + self.__movie.poster_path + '" />'
         self.content += "<br />"
-        self.content += "Adult: " + str(self.__movie.adult)
+        if self.__movie.adult:
+            self.content += "Adult: " + str(self.__movie.adult)
         self.content += "(" + str(self.__movie.revenue) + ')'
         self.content += "Status: " + self.__movie.status
-        # self.content += "Collections: " + self.__movie.belongs_to_collection[1]
         self.content += "<br />"
         self.content += "Popularity: " + str(self.__movie.popularity)
-        # self.content += "Spoken Language: " + self.__movie.spoken_language
-        # self.content += "Production Companies: " + self.__movie.production_companies
-        # self.content += "Production Countries: " + self.__movie.production_countries
         self.content += "<a href=" + self.__movie.homepage + '</a>'
 
         print self.content
 
 
 class Moviemodel(object):
-
-
     def movie(self, title):
         headers = {
             'Accept': 'application/json'
@@ -98,7 +98,8 @@ class Moviemodel(object):
 
         # movie
 
-        movieRequest = Request('https://api.themoviedb.org/3/movie/' + str(movieId) + '?api_key=9ada58564fcdacbd21d0aca3ec33f0f1',
+        movieRequest = Request(
+            'https://api.themoviedb.org/3/movie/' + str(movieId) + '?api_key=9ada58564fcdacbd21d0aca3ec33f0f1',
             headers=headers)
 
         movieResponse = urlopen(movieRequest)
@@ -121,11 +122,7 @@ class Moviemodel(object):
         do.adult = movieObject['adult']
         do.revenue = movieObject['revenue']
         do.status = movieObject['status']
-        do.belongs_to_collection = movieObject['belongs_to_collection']
         do.popularity = movieObject['popularity']
-        do.spoken_languages = movieObject['spoken_languages']
-        do.production_companies = movieObject['production_companies']
-        do.production_countries = movieObject['production_countries']
         do.homepage = movieObject['homepage']
 
         return do
@@ -158,21 +155,28 @@ class MovieDataObject(object):
         self.vote_count = 0
 
 
+class HomeView(object):
+    def __init__(self):
+        self.content = ''
+
+
 class Page(object):
     _head = """<!DOCTYPE HTML>
 <head>
     <title>BestMovies</title>
 </head>
-<body>"""
-    _content = '''
+<body>
 
-    <input type="search"><br>
-    <input type="submit">
+    <header>Welcome to where the best movies gather</header>
 
-    <h1> {self.title} </h1>
-    <p> {self.vote_count} {self.vote_average} </p>
+    <form action="/">
+        <input type="search" name="movie" required>
+        <input type="submit">
+    </form>
 
-'''
+    </header>
+"""
+    _content = ''
     _close = """
 </body>
 </html>"""
