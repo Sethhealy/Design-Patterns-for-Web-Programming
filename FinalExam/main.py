@@ -62,7 +62,18 @@ class Page(object):
     <title> Final exam</title>
 </head>
 <body>"""
-    _content = ''
+    _content = '''
+    <h1> Top 10 hits </h1>
+    <a href="#"><button> Like a Rolling Stone </button></a>
+    <a href="#"><button> Satisfaction </button></a>
+    <a href="#"><button> Imagine </button></a>
+    <a href="#"><button> Like a Rolling Stone </button></a>
+    <a href="#"><button> Like a Rolling Stone </button></a>
+    <a href="#"><button> Like a Rolling Stone </button></a>
+    <a href="#"><button> Like a Rolling Stone </button></a>
+    <a href="#"><button> Like a Rolling Stone </button></a>
+    <a href="#"><button> Like a Rolling Stone </button></a>
+    '''
 
     _close = """
 </body>

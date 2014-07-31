@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b3a6a8b-08b0-441c-98f2-2afbe133e0e0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FinalExam/app.yaml" afterPath="$PROJECT_DIR$/FinalExam/app.yaml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FinalExam/main.py" afterPath="$PROJECT_DIR$/FinalExam/main.py" />
     </list>
     <ignored path="SethHealyDPW.iws" />
@@ -29,8 +28,8 @@
       <file leaf-file-name="main.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FinalExam/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7183099" vertical-offset="0" max-vertical-offset="1245">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5140845" vertical-offset="655" max-vertical-offset="1410">
+              <caret line="68" column="32" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
               <folding>
                 <element signature="e#40#51#0" expanded="true" />
               </folding>
@@ -778,8 +777,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FinalExam/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7183099" vertical-offset="0" max-vertical-offset="1245">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5140845" vertical-offset="655" max-vertical-offset="1410">
+          <caret line="68" column="32" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
           <folding>
             <element signature="e#40#51#0" expanded="true" />
           </folding>
