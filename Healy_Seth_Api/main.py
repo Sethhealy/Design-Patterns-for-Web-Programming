@@ -43,7 +43,7 @@ class MovieView(object):
     #defining my function for my dataObject
     def __init__(self):
         self.__movie = MovieDataObject()
-        self.content = '''<header><img src="images/logo.png"/></header>
+        self.content = '''<a href="/"><header><img src="images/logo.png"/></header></a>
 
     <form action="/">
         <input type="search" name="movie" placeholder="The Matrix" required>
@@ -141,7 +141,6 @@ class Moviemodel(object):
             do.adult = movieObject['adult']
             do.revenue = "{:,}".format(movieObject['revenue'])
             do.status = movieObject['status']
-            do.popularity = movieObject['popularity']
             do.homepage = movieObject['homepage']
 
         except:

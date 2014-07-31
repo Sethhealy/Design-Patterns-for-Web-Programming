@@ -5,7 +5,7 @@
 
 body{
     background-color: #62a300;
-background-image: url(http://www.transparenttextures.com/patterns/argyle.png);
+    background-image: url(http://www.transparenttextures.com/patterns/argyle.png);
     font-family:arial;
 }
 
@@ -80,5 +80,12 @@ header{
 }
 
 .form{
-    color:blue;
+    width: 300px;
+    margin:0 auto;
+    margin-top:200px;
+}
+
+.logo{
+    width:300px;
+    margin-left:300px;
 }
