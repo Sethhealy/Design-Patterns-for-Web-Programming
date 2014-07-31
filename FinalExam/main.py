@@ -63,18 +63,17 @@ class Page(object):
 </head>
 <body>"""
     _content = '''
-    <h1> Top 10 hits </h1>
+    <h1> Top 10 pop hits </h1>
     <a href="#"><button> Like a Rolling Stone </button></a>
     <a href="#"><button> Satisfaction </button></a>
     <a href="#"><button> Imagine </button></a>
-    <a href="#"><button> Like a Rolling Stone </button></a>
-    <a href="#"><button> Like a Rolling Stone </button></a>
-    <a href="#"><button> Like a Rolling Stone </button></a>
-    <a href="#"><button> Like a Rolling Stone </button></a>
-    <a href="#"><button> Like a Rolling Stone </button></a>
-    <a href="#"><button> Like a Rolling Stone </button></a>
+    <a href="#"><button> What's Going On </button></a>
+    <a href="#"><button> Respect </button></a>
+    <a href="#"><button> Good Vibrations </button></a>
+    <a href="#"><button> Hey Jude </button></a>
+    <a href="#"><button> Smells Like Teen Spirit </button></a>
+    <a href="#"><button> What'd I Say </button></a>
     '''
-
     _close = """
 </body>
 </html>"""
