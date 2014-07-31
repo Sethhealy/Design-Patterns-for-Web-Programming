@@ -4,13 +4,14 @@
 }
 
 body{
-    background-color: #00d5fa;
-    background-image: url(http://www.transparenttextures.com/patterns/60-lines.png);
+    background-color: #62a300;
+background-image: url(http://www.transparenttextures.com/patterns/argyle.png);
     font-family:arial;
 }
 
 form{
     width:300px;
+    margin-top:10px;
     float:right;
 }
 
@@ -50,17 +51,18 @@ header{
 }
 
 .overview{
-    width:600px;
+    width:350px;
     margin: 0 auto;
-    margin-top:30px;
-    padding-left:50px;
+    margin-top:60px;
+    padding-left:130px;
 
 }
 
 .tag{
-    width:600px;
+    width:300px;
     margin:0 auto;
     margin-top:20px;
+    padding-left:150px;
 }
 
 .backdrop{
@@ -71,7 +73,7 @@ header{
 }
 
 .money{
-    width:300px;
+    width:250px;
     margin-top:20px;
     float:left;
     clear:both;
