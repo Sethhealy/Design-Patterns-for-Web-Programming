@@ -9,8 +9,8 @@ import webapp2
 from urllib2 import urlopen, Request
 
 
-
 class MainHandler(webapp2.RequestHandler):
+    #im getting my requests so that i can display the information
     def get(self):
         if self.request.GET:
             searchedmusic = self.request.GET['music']
@@ -20,32 +20,30 @@ class MainHandler(webapp2.RequestHandler):
             mv.music = searchdata
 
 
+#this is where all my viewable data is contained
 class musicView(object):
     def __init__(self):
-        self.__music =musicDataObject()
+        self.__music = musicDataObject()
 
-
-
+#this is my model where all my data is contained.
 class musicModel(object):
-    def music(self,title):
-
-
+    def music(self):
         musicrequest = Request('http://rebeccacarroll.com/api/music/music.json')
         musicresponse = urlopen(musicrequest)
         musicObject = json.load(musicresponse)
 
-
+#calling my dataobject using these.
         do = musicDataObject()
         do.musicObject['title'] = self.title
-        do.musicObject['artist'] =
-        do.musicObject['length'] =
-        do.musicObject['year'] =
-        do.musicObject['label'] =
-        do.musicObject['cover'] =
-        do.musicObject['file'] =
+        do.musicObject['artist'] = self.artist
+        do.musicObject['length'] = self.length
+        do.musicObject['year'] = self.year
+        do.musicObject['label'] = self.label
+        do.musicObject['cover'] = self.cover
+        do.musicObject['file'] = self.file
         return do
 
-
+#creating my dataobject class where i can define all the and pull all the json information.
 class musicDataObject(object):
     def __init__(self):
         self.title = ''
@@ -56,9 +54,24 @@ class musicDataObject(object):
         self.cover = ''
         self.file = ''
 
-class Page():
+
+# this is where all my html is located.
+class Page(object):
+    _head = """<!DOCTYPE HTML>
+<head>
+    <title> Final exam</title>
+</head>
+<body>"""
+    _content = ''
+
+    _close = """
+</body>
+</html>"""
+
+    def print_out(self):
+        return self._head + self._content + self._close
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
-], debug=True)
+                                  ('/', MainHandler)
+                              ], debug=True)
