@@ -13,12 +13,15 @@ class MainHandler(webapp2.RequestHandler):
     #im getting my requests so that i can display the information
     def get(self):
         if self.request.GET:
-            searchedmusic = self.request.GET['music']
+
+            p=Page()
+
+            music = self.request.GET['music']
             mm = musicModel()
-            searchdata = mm.music(searchedmusic)
+            searchdata = mm.music(music)
             mv = musicView()
             mv.music = searchdata
-
+            print(p._content)
 
 #this is where all my viewable data is contained
 class musicView(object):
@@ -44,6 +47,8 @@ class musicModel(object):
         return do
 
 #creating my dataobject class where i can define all the and pull all the json information.
+
+
 class musicDataObject(object):
     def __init__(self):
         self.title = ''
