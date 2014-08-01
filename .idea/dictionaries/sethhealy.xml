@@ -1,6 +1,7 @@
 <component name="ProjectDictionaryState">
   <dictionary name="sethhealy">
     <words>
+      <w>dataobject</w>
       <w>doctype</w>
       <w>fcdacbd</w>
       <w>getperson</w>
@@ -15,8 +16,11 @@
       <w>movieresponse</w>
       <w>movieview</w>
       <w>multicellular</w>
+      <w>musicrequest</w>
+      <w>musicresponse</w>
       <w>placerholder</w>
       <w>safetitle</w>
+      <w>searchdata</w>
       <w>searchobject</w>
       <w>searchrequest</w>
       <w>searchresponse</w>
